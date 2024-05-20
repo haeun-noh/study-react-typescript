@@ -22,10 +22,7 @@ let hobbies: string[];
 
 hobbies = ['Sports', 'Cooking'];
 
-var person: {
-	name: string;
-	age: number;
-}
+var person: Person;
 person = {
 	name: 'Max',
 	age: 32
@@ -38,10 +35,7 @@ person = {
 // };
 
 // 배열로 만들려면 뒤에 []를 붙여야 함.
-let people: {
-	name: string;
-	age: number;
-}[];
+let people: Person[];
 
 
 // 타입 추론
@@ -55,3 +49,9 @@ let courses: string | number | boolean = 'hihi';
 
 courses = 12341;// 오류가 발생하지 않음!
 
+
+// 타입 별칭
+type Person = {
+	name: string;
+	age: number;
+}
