@@ -42,3 +42,9 @@ let people: {
 	name: string;
 	age: number;
 }[];
+
+
+// 타입 추론
+let course = 'React - The Complete Guide';// 강좌 제목 저장
+
+// course = 12341;// 오류 발생 => 타입 추론이 사용되었기 때문!
