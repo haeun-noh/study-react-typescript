@@ -63,3 +63,15 @@ function print(value: any): void {
 }
 
 let un = print('1');
+
+
+// 제네릭
+function insertAtBeginning<T>(array: T[], value: T) {
+	const newArray = [value, ...array];// 배열 복사
+	return newArray;
+}
+const demoArray = [1,2,3];
+
+const updatedArray = insertAtBeginning(demoArray, -1);
+// [-1, 1, 2, 3]
+const stringArray = insertAtBeginning(['a', 'b', 'c'], 'd');
