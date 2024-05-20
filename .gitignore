@@ -1,5 +1,5 @@
-# Created by https://www.toptal.com/developers/gitignore/api/visualstudiocode,node,yarn
-# Edit at https://www.toptal.com/developers/gitignore?templates=visualstudiocode,node,yarn
+# Created by https://www.toptal.com/developers/gitignore/api/react,visualstudiocode,node
+# Edit at https://www.toptal.com/developers/gitignore?templates=react,visualstudiocode,node
 
 ### Node ###
 # Logs
@@ -141,6 +141,19 @@ dist
 # SvelteKit build / generate output
 .svelte-kit
 
+### react ###
+.DS_*
+**/*.backup.*
+**/*.back.*
+
+node_modules
+
+*.sublime*
+
+psd
+thumb
+sketch
+
 ### VisualStudioCode ###
 .vscode/*
 !.vscode/settings.json
@@ -160,21 +173,4 @@ dist
 .history
 .ionide
 
-### yarn ###
-# https://yarnpkg.com/getting-started/qa#which-files-should-be-gitignored
-
-.yarn/*
-!.yarn/releases
-!.yarn/patches
-!.yarn/plugins
-!.yarn/sdks
-!.yarn/versions
-
-# if you are NOT using Zero-installs, then:
-# comment the following lines
-!.yarn/cache
-
-# and uncomment the following lines
-# .pnp.*
-
-# End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,node,yarn
+# End of https://www.toptal.com/developers/gitignore/api/react,visualstudiocode,node
