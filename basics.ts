@@ -55,3 +55,11 @@ type Person = {
 	name: string;
 	age: number;
 }
+
+
+// 함수 및 함수 유형
+function print(value: any): void {
+	console.log(value);
+}
+
+let un = print('1');
