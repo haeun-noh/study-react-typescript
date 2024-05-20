@@ -48,3 +48,10 @@ let people: {
 let course = 'React - The Complete Guide';// 강좌 제목 저장
 
 // course = 12341;// 오류 발생 => 타입 추론이 사용되었기 때문!
+
+
+// 유니온 타입
+let courses: string | number | boolean = 'hihi';
+
+courses = 12341;// 오류가 발생하지 않음!
+
