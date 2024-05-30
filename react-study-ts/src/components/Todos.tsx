@@ -1,5 +1,6 @@
 import React from 'react';
 import Todo from '../models/todo';
+import TodoItem from './TodoItem';
 
 // React.FC: 리액트 패키지에 정의된 타입
 // 이를 통해 이 함수가 함수형 컴포넌트로 동작한다는 걸 명확히 한다. 
@@ -13,7 +14,7 @@ const Todos: React.FC<{ items: Todo[] }> = (props) => {// 클래스 이름은 �
     return (
         <ul>
             {props.items.map((item) => (
-                <li key={item.id}>{item.text}</li>
+                <TodoItem key={item.id} text={item.text} />// key는 TodoItem에서 받지 않아도 FC 기본타입이 key를 컴포넌트에 추가해 사용할 수 있게 된다. 
             ))}
         </ul>
     );
