@@ -12,11 +12,16 @@ import classes from './Todos.module.css';
 // 이렇게 추가함으로써 FC타입 내부의 기능을 밖으로 꺼낸 것이다.
 
 // FC타입의 기능: 여기에 어떤 객체 타입을 정의하든 객체의 기본타입, chilren 프로퍼티와 합쳐주는 기능
-const Todos: React.FC<{ items: Todo[] }> = (props) => {// 클래스 이름은 타입으로 사용가능 
+const Todos: React.FC<{ items: Todo[]; onRemoveTodo: (id: string) => void }> = (props) => {// 클래스 이름은 타입으로 사용가능 
+
     return (
         <ul className={classes.todos}>
             {props.items.map((item) => (
-                <TodoItem key={item.id} text={item.text} />// key는 TodoItem에서 받지 않아도 FC 기본타입이 key를 컴포넌트에 추가해 사용할 수 있게 된다. 
+                <TodoItem
+                    key={item.id}
+                    text={item.text}
+                    onRemoveTodo={props.onRemoveTodo.bind(null, item.id)}// 이 키워드가 무엇을 지정하는가, onRemoveTodo받는 매개변수
+                />// key는 TodoItem에서 받지 않아도 FC 기본타입이 key를 컴포넌트에 추가해 사용할 수 있게 된다. 
             ))}
         </ul>
     );
