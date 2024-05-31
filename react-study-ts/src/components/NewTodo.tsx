@@ -1,5 +1,7 @@
 import {useRef} from 'react';// 레퍼런스 생성 가능
 
+import classes from './NewTodo.module.css';
+
 // 사용자에게 입력창을 제공하고 사용자가 입력한 Todo의 내용을 가져올 것
 
 // onAddTodo가 함수임을 나타내기 위해 화살표 함수를 사용한다. 이 때의 함수는 타입일 뿐 함수가 생성되는 것이 아니다. 
@@ -40,7 +42,7 @@ const NewTodo: React.FC<{onAddTodo: (text: string) => void }> = (props) => {
 
     return (
         // 만약 form의 onSubmit에 할당된 함수의 event의 타입이 React.FormEvent가 아니라면 에러발생
-        <form onSubmit={submitHandler}> 
+        <form onSubmit={submitHandler} className={classes.form}> 
             <label htmlFor="text">Todo text</label>{/* htmlFor로 label과 input을 연결 */}
             <input type="text" id="text" ref={todoTextInput}/>
             <button>Add Todo</button>

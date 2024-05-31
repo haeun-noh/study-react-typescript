@@ -1,6 +1,8 @@
+import classes from './TodoItem.module.css'
+
 const TodoItem: React.FC<{text: string}> = (props) => {// props프로퍼티는 언제나 객체 타입
     return (
-        <li>{props.text}</li>
+        <li className={classes.item}>{props.text}</li>
     );
 }
 
