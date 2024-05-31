@@ -1,30 +1,29 @@
-import React from 'react';
-import Todo from '../models/todo';
+import React, { useContext } from 'react';
+
 import TodoItem from './TodoItem';
+// Provider가 아닌 Context를 import함. 그래서 여기에 해당 context를 활용할 수 있는 것.
+import { TodosContext } from '../store/todos-context';
 
 import classes from './Todos.module.css';
 
-// React.FC: 리액트 패키지에 정의된 타입
-// 이를 통해 이 함수가 함수형 컴포넌트로 동작한다는 걸 명확히 한다. 
-// React.FC는 제네릭 타입이다. 
+// todosCtx 덕분에 프로퍼티에 대한 타입 정의도 삭제할 수 있다. props가 사용되지 않기 때문이다. 대신 컨텍스트를 사용한다. 
+const Todos: React.FC = () => {
 
-// <{}> 안에 새로 만들 props를 정의한다.
-// 이렇게 추가함으로써 FC타입 내부의 기능을 밖으로 꺼낸 것이다.
-
-// FC타입의 기능: 여기에 어떤 객체 타입을 정의하든 객체의 기본타입, chilren 프로퍼티와 합쳐주는 기능
-const Todos: React.FC<{ items: Todo[]; onRemoveTodo: (id: string) => void }> = (props) => {// 클래스 이름은 타입으로 사용가능 
+    // 해당 값의 타입은 자동적으로 TodosContextObj 타입이 지정됨
+    // props인수대신 사용 
+    const todosCtx = useContext(TodosContext);// todosCtx에 context를 받아 접근 가능
 
     return (
         <ul className={classes.todos}>
-            {props.items.map((item) => (
+            {todosCtx.items.map((item) => (
                 <TodoItem
                     key={item.id}
                     text={item.text}
-                    onRemoveTodo={props.onRemoveTodo.bind(null, item.id)}// 이 키워드가 무엇을 지정하는가, onRemoveTodo받는 매개변수
-                />// key는 TodoItem에서 받지 않아도 FC 기본타입이 key를 컴포넌트에 추가해 사용할 수 있게 된다. 
+                    onRemoveTodo={todosCtx.removeTodo.bind(null, item.id)}
+                />
             ))}
         </ul>
     );
 }
 
-export default Todos;// export를 통해 파일 밖에서도 접근 가능하도록 설정
+export default Todos;
