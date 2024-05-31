@@ -1,7 +1,11 @@
 import {useRef} from 'react';// 레퍼런스 생성 가능
 
 // 사용자에게 입력창을 제공하고 사용자가 입력한 Todo의 내용을 가져올 것
-const NewTodo: React.FC<{}> = () => {
+
+// onAddTodo가 함수임을 나타내기 위해 화살표 함수를 사용한다. 이 때의 함수는 타입일 뿐 함수가 생성되는 것이 아니다. 
+// 추가하는 작업만 하기 때문에 반환값은 void 
+// 파라미터로 받는 값은 string 타입의 text 
+const NewTodo: React.FC<{onAddTodo: (text: string) => void }> = (props) => {
     // useRef만으로는 이 레퍼런스가 input에 연결될지를 모른다. 
     // input에 넣을수도, button에 넣을수도 있게 된다.
     // 그래서 이 레퍼런스에 저장될 데이터가 어떤 타입인지를 밝혀야 한다.
@@ -30,7 +34,8 @@ const NewTodo: React.FC<{}> = () => {
             return;
         }
 
-        
+        // props로 함수 포인터 전달
+        props.onAddTodo(enteredText);
     }
 
     return (
